@@ -2,17 +2,17 @@
 
 Drop-in replacement for Ruby on Rails' `has_secure_password`, but this one uses [argon2](https://en.wikipedia.org/wiki/Argon2) to hash the password.
 
-*No code changes necessary.*  Just install this gem and your users will be using `argon2`
+**No code changes necessary.**  Just add this gem to your project and your users will be using `argon2`
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add it to your bundle:
 
 ```sh
 bundle add has_secure_password_argon2
 ```
 
-Or
+Or add this line to your application's Gemfile:
 
 ```ruby
 gem 'has_secure_password_argon2'
@@ -38,8 +38,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/venabl
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+[MIT](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
-Everyone interacting in the HasSecurePasswordArgon2 project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/has_secure_password_argon2/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/has_secure_password_argon2/blob/master/CODE_OF_CONDUCT.md).
