@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 require 'simplecov'
+
+if ENV['CI'] == 'true'
+  require 'coveralls'
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+end
+
 SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
