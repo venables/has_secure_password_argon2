@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    has_secure_password_argon2 (0.1.0)
+    has_secure_password_argon2 (1.0.0)
       activerecord (>= 4.2.6)
       activesupport (>= 4.2.6)
       argon2 (~> 2.0)
