@@ -1,12 +1,18 @@
-# HasSecurePasswordArgon2
+# has_secure_password_argon2
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/has_secure_password_argon2`. To experiment with that code, run `bin/console` for an interactive prompt.
+Drop-in replacement for Ruby on Rails' `has_secure_password`, but this one uses [argon2](https://en.wikipedia.org/wiki/Argon2) to hash the password.
 
-TODO: Delete this and the text above, and describe your gem
+*No code changes necessary.*  Just install this gem and your users will be using `argon2`
 
 ## Installation
 
 Add this line to your application's Gemfile:
+
+```sh
+bundle add has_secure_password_argon2
+```
+
+Or
 
 ```ruby
 gem 'has_secure_password_argon2'
@@ -22,17 +28,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Just add this gem to your Gemfile and `has_secure_password` will start to use `argon2` for password hashing.
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+If you already have users authenticating with Rails' version of `has_secure_password`, this gem will automatically upgrade users to `argon2` during their next login.  In this case, please leave `bcrypt` installed to support he upgrade process.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/has_secure_password_argon2. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/venables/has_secure_password_argon2. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
