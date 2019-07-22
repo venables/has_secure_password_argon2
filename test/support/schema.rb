@@ -5,5 +5,6 @@ ActiveRecord::Schema.define do
 
   create_table :models, force: true do |t|
     t.string :password_digest
+    t.string :confirmation_digest
   end
 end

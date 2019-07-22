@@ -1,14 +1,9 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'support/model'
-require 'bcrypt'
+require 'support/models'
 
 class HasSecurePasswordArgon2Test < ActiveSupport::TestCase
-  test 'it has a version number' do
-    refute_nil ::HasSecurePasswordArgon2::VERSION
-  end
-
   test 'password= sets password_digest on a new model' do
     model = Model.new
     model.password = 'abc123'
@@ -32,7 +27,33 @@ class HasSecurePasswordArgon2Test < ActiveSupport::TestCase
   test '#authenticate returns false upon invalid password' do
     model = Model.new(password: 'testing')
 
-    refute model.authenticate('note-testing')
+    refute model.authenticate('not-testing')
+  end
+
+  test '#authenticate returns false if no password was set' do
+    model = Model.new
+
+    refute model.authenticate('nope')
+  end
+
+  test '#authenticate returns false if given a nil password' do
+    model = Model.new(password: 'test')
+
+    refute model.authenticate(nil)
+  end
+
+  test 'allows using different attribute names' do
+    model = ModelWithAttribute.new
+    model.confirmation = 'abc123'
+
+    assert model.confirmation_digest.start_with?('$argon2')
+  end
+
+  test 'allows using shorthand' do
+    model = ModelWithAttributeShorthand.new
+    model.confirmation = 'abc123'
+
+    assert model.confirmation_digest.start_with?('$argon2')
   end
 
   test '#authenticate updates the model for argon2 and returns the model upon valid bcrypt password' do

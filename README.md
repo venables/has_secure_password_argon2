@@ -35,6 +35,34 @@ Just add this gem to your Gemfile and `has_secure_password` will start to use `a
 
 If you already have users authenticating with Rails' version of `has_secure_password`, this gem will automatically upgrade users to `argon2` during their next login.  In this case, please leave `bcrypt` installed to support he upgrade process.
 
+## Different Attributes
+
+If you are using Rails 6+, you can secure an attribute other than `password`.  Simply pass the attribute name as the first argument:
+
+```
+has_secure_password :recovery_password, validations: false
+```
+
+This gem also adds a simpler alias, `has_secure`. The same code could read as:
+
+```
+has_secure :recovery_password, validations: false
+```
+
+## Configuration
+
+Argon2 allows for several options which can be set in an initializer.
+
+For example, in `config/initializers/has_secure_password_argon2.rb`
+
+```
+HasSecurePasswordArgon2.time_cost = 2 # Default is 2. Can be 1..10
+HasSecurePasswordArgon2.memory_cost = 16 # Default is 16. Can be 1..31
+HasSecurePasswordArgon2.secret = ENV['ARGON2_SECRET'] # Default nil. Set this to the output of `rails secret' for added security
+```
+
+Read more about the [Argon2 options here](https://github.com/technion/ruby-argon2).
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/venables/has_secure_password_argon2. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
