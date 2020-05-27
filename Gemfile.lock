@@ -40,7 +40,7 @@ GEM
       concurrent-ruby (~> 1.0)
     json (1.8.6)
     minitest (5.11.3)
-    rake (10.5.0)
+    rake (13.0.1)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -65,7 +65,7 @@ DEPENDENCIES
   coveralls
   has_secure_password_argon2!
   minitest (~> 5.0)
-  rake (~> 10.0)
+  rake (~> 13.0)
   simplecov (~> 0.11.2)
   sqlite3 (~> 1.3)
 
