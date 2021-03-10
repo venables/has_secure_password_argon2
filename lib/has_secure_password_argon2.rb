@@ -18,8 +18,8 @@ module HasSecurePasswordArgon2
   self.memory_cost = 16 # 1..31
 
   module ClassMethods
-    def has_secure_password(options = {})
-      super options
+    def has_secure_password(*args, **keyw)
+      super
       include InstanceMethodsOnActivation
     end
   end
