@@ -39,7 +39,7 @@ module HasSecurePasswordArgon2
       if password_digest.start_with?('$argon2')
         Argon2::Password.verify_password(unencrypted_password, password_digest, HasSecurePasswordArgon2.secret) && self
       elsif super(unencrypted_password)
-        self.password = hash_argon2_password(unencrypted_password)
+        self.password_digest = hash_argon2_password(unencrypted_password)
         save(validate: false)
         self
       else

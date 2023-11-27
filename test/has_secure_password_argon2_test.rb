@@ -45,6 +45,10 @@ class HasSecurePasswordArgon2Test < ActiveSupport::TestCase
     end
 
     assert model.password_digest.start_with?('$argon2')
+    assert model.authenticate(password)
+    model.reload
+    assert model.password_digest.start_with?('$argon2')
+    assert model.authenticate(password)
     assert model.persisted?
   end
 
